@@ -57,8 +57,17 @@ jobs:
         sed -i 's/org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8/org.gradle.jvmargs=-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8/' ${{ github.workspace }}/V2rayNG/gradle.properties
         ./gradlew assembleRelease
 
+    - name: Sign APK
+        uses: ilharp/sign-android-release@v1
+        id: sign_app
+        with:
+          releaseDir: V2rayNG/app/build/outputs/apk/release
+          signingKey: ${{ secrets.ANDROID_SIGNING_KEY }}
+          keyAlias: ${{ secrets.ANDROID_KEY_ALIAS }}
+          keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
-        name: apk
-        path: ${{ github.workspace }}/V2rayNG/app/build/outputs/apk/release/
+        name: apks
+        path: ${{steps.sign_app.outputs.signedFiles}}
