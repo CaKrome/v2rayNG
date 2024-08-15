@@ -11,8 +11,8 @@ android {
         applicationId = "com.v2ray.ang"
         minSdk = 21
         targetSdk = 34
-        versionCode = 580
-        versionName = "1.8.36"
+        versionCode = 582
+        versionName = "1.8.37"
         multiDexEnabled = true
         splits {
             abi {
@@ -84,7 +84,7 @@ android {
         buildConfig = true
     }
 
-    packagingOptions {
+    packaging {
         jniLibs {
             useLegacyPackaging = true
         }
