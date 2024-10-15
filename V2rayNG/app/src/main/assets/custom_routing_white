@@ -21,13 +21,6 @@
     ]
   },
   {
-    "remarks": "绕过局域网域名",
-    "outboundTag": "direct",
-    "domain": [
-      "geosite:private"
-    ]
-  },
-  {
     "remarks": "绕过局域网IP",
     "outboundTag": "direct",
     "ip": [
@@ -35,10 +28,18 @@
     ]
   },
   {
+    "remarks": "绕过局域网域名",
+    "outboundTag": "direct",
+    "domain": [
+      "geosite:private"
+    ]
+  },
+  {
     "remarks": "绕过中国域名",
     "outboundTag": "direct",
     "domain": [
       "domain:dns.alidns.com",
+      "domain:dns.pub",
       "domain:doh.pub",
       "domain:dot.pub",
       "domain:doh.360.cn",
